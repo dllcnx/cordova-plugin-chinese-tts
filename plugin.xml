@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-chinese-tts" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>chineseTTS</name>
+    <js-module name="ChineseTTS" src="www/chineseTTS.js">
+        <clobbers target="cordova.plugins.chineseTTS"/>
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="ChineseTTS">
+                <param name="android-package" value="com.smartmapx.tts.ChineseTTS"/>
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/ChineseTTS.java" target-dir="src/com/smartmapx/tts"/>
+        <source-file src="src/android/FileUtils.java" target-dir="src/com/smartmapx/tts"/>
+        <source-file src="src/android/OfflineResource.java" target-dir="src/com/smartmapx/tts"/>
+        <source-file src="src/android/SpeechUtilOffline.java" target-dir="src/com/smartmapx/tts"/>
+        <source-file src="src/android/libs/usc.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/armeabi/libyzstts.so" target-dir="src/main/jniLibs/armeabi"/>
+        <source-file src="src/android/libs/armeabi/libuscasr.so" target-dir="src/main/jniLibs/armeabi"/>
+        <source-file src="src/android/assets/backend_lzl" target-dir="src/main/assets"/>
+        <source-file src="src/android/assets/frontend_model" target-dir="src/main/assets"/>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+            <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+            <uses-permission android:name="android.permission.READ_CONTACTS"/>
+            <uses-permission android:name="android.permission.WAKE_LOCK"/>
+            <uses-permission android:name="android.permission.VIBRATE"/>
+        </config-file>
+        <framework src="com.hjq:xxpermissions:6.0"/>
+    </platform>
+</plugin>

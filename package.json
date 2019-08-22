@@ -6,16 +6,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "KeiferJu <jkf19980216@163.com> (myllcn.com)",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KeiferJu/cordova-plugin-chinese-tts.git",
-    "homepage": "https://github.com/KeiferJu/cordova-plugin-chinese-tts.git#readme",
-    "keywords": [
-      "cordova",
-      "tts",
-      "chiness",
-      "ionic"
-    ]
-  }
+  "license": "MIT"
 }

@@ -11,17 +11,7 @@
                 <param name="android-package" value="com.smartmapx.tts.ChineseTTS"/>
             </feature>
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
-        <source-file src="src/android/ChineseTTS.java" target-dir="src/com/smartmapx/tts"/>
-        <source-file src="src/android/FileUtils.java" target-dir="src/com/smartmapx/tts"/>
-        <source-file src="src/android/OfflineResource.java" target-dir="src/com/smartmapx/tts"/>
-        <source-file src="src/android/SpeechUtilOffline.java" target-dir="src/com/smartmapx/tts"/>
-        <source-file src="src/android/libs/usc.jar" target-dir="libs"/>
-        <source-file src="src/android/libs/armeabi/libyzstts.so" target-dir="src/main/jniLibs/armeabi"/>
-        <source-file src="src/android/libs/armeabi/libuscasr.so" target-dir="src/main/jniLibs/armeabi"/>
-        <source-file src="src/android/assets/backend_lzl" target-dir="src/main/assets"/>
-        <source-file src="src/android/assets/frontend_model" target-dir="src/main/assets"/>
-        <config-file target="AndroidManifest.xml" parent="/manifest">
+        <config-file parent="/*" target="AndroidManifest.xml">
             <uses-permission android:name="android.permission.RECORD_AUDIO"/>
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -35,6 +25,15 @@
             <uses-permission android:name="android.permission.WAKE_LOCK"/>
             <uses-permission android:name="android.permission.VIBRATE"/>
         </config-file>
+        <source-file src="src/android/ChineseTTS.java" target-dir="src/com/smartmapx/tts"/>
+        <source-file src="src/android/FileUtils.java" target-dir="src/com/smartmapx/tts"/>
+        <source-file src="src/android/OfflineResource.java" target-dir="src/com/smartmapx/tts"/>
+        <source-file src="src/android/SpeechUtilOffline.java" target-dir="src/com/smartmapx/tts"/>
+        <source-file src="src/android/libs/armeabi/libyzstts.so" target-dir="jniLibs/armeabi"/>
+        <source-file src="src/android/libs/armeabi/libuscasr.so" target-dir="jniLibs/armeabi"/>
+        <source-file src="src/android/assets/backend_lzl" target-dir="assets"/>
+        <source-file src="src/android/assets/frontend_model" target-dir="assets"/>
+        <lib-file src="src/android/libs/usc.jar" />
         <framework src="com.hjq:xxpermissions:6.0"/>
     </platform>
 </plugin>

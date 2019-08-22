@@ -1,11 +1,21 @@
 {
-  "name": "chinesetts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "cordova-plugin-chinese-tts",
+  "version": "1.0.1",
+  "description": "支持中文tts的cordova插件(基于云之声封装)",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "KeiferJu <jkf19980216@163.com> (myllcn.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeiferJu/cordova-plugin-chinese-tts.git",
+    "homepage": "https://github.com/KeiferJu/cordova-plugin-chinese-tts.git#readme",
+    "keywords": [
+      "cordova",
+      "tts",
+      "chiness",
+      "ionic"
+    ]
+  }
 }

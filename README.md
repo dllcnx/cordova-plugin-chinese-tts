@@ -1,7 +1,8 @@
 # 使用方式
-
+支持中文语音tts的cordova插件
 
 ### 下载
+```
 cordova plugin add cordova-plugin-chinese-tts
 ```
 

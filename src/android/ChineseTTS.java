@@ -27,16 +27,27 @@ public class ChineseTTS extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-
         if (action.equals("init")) {
+            System.out.println("初始化");
             this.init();
             return true;
         }
 
 
         if (action.equals("speak")) {
+            System.out.println("播放");
             String message = args.getString(0);
             this.speak(message, callbackContext);
+            return true;
+        }
+
+        if (action.equals("state")) {
+            System.out.println("查训状态");
+            if (this.state_speech()) {
+                callbackContext.success(1);     //正在播放
+            } else {
+                callbackContext.success(0);     //播放完成
+            }
             return true;
         }
         return false;
@@ -67,6 +78,14 @@ public class ChineseTTS extends CordovaPlugin {
         }
     }
 
+    /**
+     * 获得播放状态
+     */
+    private boolean state_speech() {
+        System.out.println(SpeechUtilOffline.getInstance(context).isSpeaking());
+        return SpeechUtilOffline.getInstance(context).isSpeaking();
+    }
+
 
     /**
      * 运行时权限--
@@ -78,7 +97,7 @@ public class ChineseTTS extends CordovaPlugin {
 //                Manifest.permission.RECEIVE_BOOT_COMPLETED
 
         if (XXPermissions.isHasPermission(context, Permission.WRITE_EXTERNAL_STORAGE) && XXPermissions.isHasPermission(context, Permission.ACCESS_FINE_LOCATION) && XXPermissions.isHasPermission(context, Permission.READ_PHONE_STATE)) {
-
+            SpeechUtilOffline.getInstance(context);
         } else {
             XXPermissions.with(this.cordova.getActivity())
                     // 可设置被拒绝后继续申请，直到用户授权或者永久拒绝
@@ -93,7 +112,7 @@ public class ChineseTTS extends CordovaPlugin {
                         public void hasPermission(List<String> granted, boolean isAll) {
                             if (isAll) {
                                 Toast.makeText(context, "权限获取成功,正在初始化语音包", Toast.LENGTH_SHORT).show();
-                                SpeechUtilOffline.getInstance(context).play("语音包初始化完成", SpeechUtilOffline.PLAY_MODE.QUEUED);
+                                SpeechUtilOffline.getInstance(context);
                             }
                         }
 

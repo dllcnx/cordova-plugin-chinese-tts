@@ -42,17 +42,28 @@ public class SpeechUtilOffline {
     }
 
 
+    /**
+     * 设置/获取当前播放状态
+     *
+     * @return
+     */
+    public boolean isSpeaking() {   //this line modified by shichen.li
+        return isSpeaking;
+    }
+
+    private void setSpeaking(boolean speaking) {    //this line modified by shichen.li
+        isSpeaking = speaking;
+    }
 
 
     /**
      * 初始化引擎
-     *
      */
     private void init(final Context context) {
         try {
             offlineResource = new OfflineResource(context);
         } catch (IOException e) {
-            Log.e("ing","offlineResouce failed , error msg : "+e.getMessage());
+            Log.e("ing", "offlineResouce failed , error msg : " + e.getMessage());
             e.printStackTrace();
         }
         // 初始化语音合成对象
@@ -74,36 +85,50 @@ public class SpeechUtilOffline {
                 switch (type) {
                     case SpeechConstants.TTS_EVENT_INIT:
                         // 初始化成功回调
+                        System.out.println("初始化成功回调");
                         break;
                     case SpeechConstants.TTS_EVENT_SYNTHESIZER_START:
                         // 开始合成回调
+                        setSpeaking(true);
+                        System.out.println("开始合成回调");
+
                         break;
                     case SpeechConstants.TTS_EVENT_SYNTHESIZER_END:
                         // 合成结束回调
+                        System.out.println("开始合成回调");
                         break;
                     case SpeechConstants.TTS_EVENT_BUFFER_BEGIN:
                         // 开始缓存回调
+                        System.out.println("开始缓存回调");
                         break;
                     case SpeechConstants.TTS_EVENT_BUFFER_READY:
                         // 缓存完毕回调
+                        System.out.println("缓存完毕回调");
                         break;
                     case SpeechConstants.TTS_EVENT_PLAYING_START:
                         // 开始播放回调
+                        System.out.println("开始播放回调");
                         break;
                     case SpeechConstants.TTS_EVENT_PLAYING_END:
                         // 播放完成回调
+                        setSpeaking(false);
+                        System.out.println("播放完成回调");
                         break;
                     case SpeechConstants.TTS_EVENT_PAUSE:
                         // 暂停回调
+                        System.out.println("暂停回调");
                         break;
                     case SpeechConstants.TTS_EVENT_RESUME:
                         // 恢复回调
+                        System.out.println("恢复回调");
                         break;
                     case SpeechConstants.TTS_EVENT_STOP:
                         // 停止回调
+                        System.out.println("停止回调");
                         break;
                     case SpeechConstants.TTS_EVENT_RELEASE:
                         // 释放资源回调
+                        System.out.println("释放资源回调");
                         break;
                     default:
                         break;
@@ -114,7 +139,7 @@ public class SpeechUtilOffline {
             @Override
             public void onError(int type, String errorMSG) {
                 // 语音合成错误回调
-                Log.e("ing","TTS onError __ type : "+ type +" errorMsg : " +errorMSG );
+                Log.e("ing", "TTS onError __ type : " + type + " errorMsg : " + errorMSG);
             }
         });
         // 初始化合成引擎
@@ -124,7 +149,6 @@ public class SpeechUtilOffline {
 
     /**
      * 停止播放
-     *
      */
     public void stop() {
         mTTSPlayer.stop();
@@ -132,7 +156,6 @@ public class SpeechUtilOffline {
 
     /**
      * 播放
-     *
      */
     public void play(String content) {
         playImmediately(content);
@@ -174,7 +197,6 @@ public class SpeechUtilOffline {
 
     /**
      * 释放资源
-     *
      */
     public void release() {
         // 主动释放离线引擎

@@ -2,8 +2,7 @@
 
 
 ### 下载
-```
-ionic cordova plugin add cordova-plugin-chinese-tts
+cordova plugin add cordova-plugin-chinese-tts
 ```
 
 ### ts中使用

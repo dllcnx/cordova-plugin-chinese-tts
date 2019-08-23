@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-chinese-tts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "支持中文tts的cordova插件(基于云之声封装)",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
